@@ -13,11 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->string('userId');
-            $table->string('productId');
-            $table->string('comment');
+            $table->string('user_id');// thong tin nguoi mua
+            $table->string('shipping_address');// dia chi giao hang
+            $table->string('grand_total');//tong don gia
+            $table->string('code');//ma giao hang
+            $table->string('delivery_status');//trang thai giao hang
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('orders');
     }
 };

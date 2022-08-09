@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('productCode')->unique();
             $table->string('productName')->require();
             $table->string('productPrice')->nullable();
-            $table->string('productQuantyti')->nullable();
+            $table->string('productQuantity')->nullable();
             $table->string('productBrand')->nullable();
             $table->string('productImage')->nullable();
             $table->string('productDetail');
