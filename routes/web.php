@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\loginController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,16 +15,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['prefix' => 'admin'], function() {
-    Route::get('/', function () {
-        return view('layout.master');
-    })->name('home');
-    Route::get('/index', [loginController::class, 'index'])->name('admin');
-    Route::post('/login', [loginController::class, 'login'])->name('admin.login');
-    Route::get('/register-form', [loginController::class, 'register'])->name('admin.register.form');
-    Route::post('/register', [loginController::class, 'store'])->name('admin.register');
-    Route::get('/logout', [loginController::class, 'logout'])->name('admin.logout');
+Route::group(['prefix' => 'login'], function(){
+    Route::get('/', [loginController::class, 'index'])->name('loginform');
+    Route::post('/postlogin', [loginController::class, 'login'])->name('login');
+    Route::get('/register-form', [loginController::class, 'register'])->name('register.form');
+    Route::post('/register', [loginController::class, 'store'])->name('register');
+    Route::get('/logout', [loginController::class, 'logout'])->name('logout');
 });
 
+Route::group(['middleware' => 'verfiy-role'], function() {
+    Route::group(['prefix' => 'admin'], function() {
+        Route::get('/', function () {
+            return view('layout.master');
+        })->name('home');
 
+        Route::group(['prefix' => 'product'], function(){
+            Route::get('/', [ProductController::class, 'index'])->name('product');
+            Route::get('/get-product', [ProductController::class, 'getProducts'])->name('getProducts');
+        });
+    });
+});
 
+Route::group(['prefix' => 'member'], function() {
+    Route::get('/', function () {
+        return view('member.layout.master');
+    })->name('member.home');
+});

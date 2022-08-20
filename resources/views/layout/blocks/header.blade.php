@@ -28,14 +28,14 @@
                     <span>My Account</span>
                 </a>
                 @if(!empty($auth))
-                <a href="{{ route('admin.index') }}" class="dropdown-item notify-item">
+                <a href="{{ route('') }}" class="dropdown-item notify-item">
                     <i class="mdi mdi-logout mr-1"></i>
                     <span>Logout</span>
                 </a>
                 @else
-                <a href="{{ route('admin.login') }}" class="dropdown-item notify-item">
+                <a href="{{ route('logout') }}" class="dropdown-item notify-item">
                     <i class="mdi mdi-logout mr-1"></i>
-                    <span>Login</span>
+                    <span>Logout</span>
                 </a>
                 @endif
             </div>

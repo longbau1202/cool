@@ -45,6 +45,7 @@
                                                 <th>Name</th>
                                                 <th>Price</th>
                                                 <th>Quantity</th>
+                                                <th>Brand</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -101,7 +102,7 @@
             dom: "<'row' <'col-sm-12 col-md-6'l> <'col-sm-12 col-md-6'f>> <'row mb-3' <'col-sm-12 col-md-5'i> <'col-sm-12 col-md-7'p>> <'row' <'col-sm-12't>> <'row' <'col-sm-12 col-md-5'i> <'col-sm-12 col-md-7'p>>",
             serverSide: true,
             ajax: {
-                url: "{{ route('products.getProducts') }}",
+                url: "{{ route('getProducts') }}",
             },
             columns: [
                 {

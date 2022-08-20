@@ -19,15 +19,15 @@ class loginController extends Controller
     {
         if (Auth::check())
         {
-            echo "da dang nhap";
+            return redirect()->route('home');
         } else {
-            return view('auth.login');
+            return view('auth.formlogin');
         }
     }
 
     public function register()
     {
-        return view('login.register');
+        return view('auth.register');
     }
 
     /**
@@ -43,17 +43,17 @@ class loginController extends Controller
         ];
         if (Auth::attempt($login))
         {
-            echo "thanh cong";
+            return redirect()->route('home');
         } else
         {
-            echo "that bai";
+            return view('auth.formlogin');
         }
     }
 
     public function logout(Request $request)
     {
         Auth::logout();
-        return redirect()->route('admin');
+        return redirect()->route('loginform');
     }
 
     /**
@@ -68,7 +68,17 @@ class loginController extends Controller
         $params['password'] = Hash::make($request->password);
         $data = new User();
         $data->fill($params)->save();
-        return $data;
+        $login = [
+            'email' => $request->email,
+            'password' => $request->password,
+        ];
+        if (Auth::attempt($login))
+        {
+            return redirect()->route('home');
+        } else
+        {
+            return redirect()->route('register.form');
+        }
     }
 
     /**
