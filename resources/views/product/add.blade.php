@@ -90,11 +90,11 @@
                     </div>
 
                     <div class="fallback">
-                        <input name="productImage" type="file" id="product_img" multiple />
-
+                        <label for="product_img" class="btn btn-success mb-2">Select Image</label>
+                        <input name="productImage" type="file" id="product_img" style="display: none"/>
                     </div>
 
-                    <div class="mt-4" style="text-align:center">
+                    <div class="mt-4">
                         <img src="" alt="contact-img" title="contact-img" id="img-show" class="rounded mr-3"
                             height="250" />
                     </div>
@@ -121,7 +121,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             let inputFile = document.querySelector('#product_img')
             let image = document.getElementById("img-show")
-
+            image.setAttribute('src', 'https://cdn.stocksnap.io/img-thumbs/960w/nature-path_4LVC9Y8JMW.jpg');
             inputFile.addEventListener('change', (e) => {
                 let files = inputFile.files
                 if (files.length === 0) return;

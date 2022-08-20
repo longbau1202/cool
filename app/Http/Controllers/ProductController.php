@@ -65,7 +65,7 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductFormRequest $request)
     {
         if ($request->has('productImage')) {
             $image = $request->file('productImage')->storeAs(
@@ -90,9 +90,10 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        return view('product.detail', compact('product'));
     }
 
     /**
@@ -101,9 +102,10 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        return view('product.edit', compact('product'));
     }
 
     /**
@@ -113,9 +115,24 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(ProductFormRequest $request, $id)
     {
-        //
+        $product = Product::findOrFail($id);
+
+        if ($request->has('productImage')) {
+            $image = $request->file('productImage')->storeAs(
+                'uploads/products',
+                uniqid() . $request->productImage->getClientOriginalName()
+            );
+            $image = str_replace('uploads/products/','',$image);
+        }else {
+            $image = $product->productImage;
+        }
+
+        $params = $request->all();
+        $params['productImage'] = $image;
+        $update = $product->fill($params)->save();
+        return redirect()->route('show',['id' => $id]);
     }
 
     /**

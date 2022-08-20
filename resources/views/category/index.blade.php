@@ -81,7 +81,6 @@
 <script src="{{ asset('assets/js/vendor/dataTables.responsive.min.js') }}"></script>
 <script src="{{ asset('assets/js/vendor/responsive.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('assets/js/vendor/dataTables.checkboxes.min.js') }}"></script>
-@notifyJs
 <script>
     $(document).ready(function() {
         var table = $('#categories-datatable').DataTable({

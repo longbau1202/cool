@@ -20,4 +20,9 @@ class Product extends Model
         'productBrand',
         'productImage'
     ];
+
+    public function makers()
+    {
+      return $this->belongsTo(Brand::class,'brand');
+    }
 }

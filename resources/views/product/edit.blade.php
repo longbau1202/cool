@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-xl-12 flex-button">
                 <div>
-                    <a href="{{ Route('products.show',['id'=>$product->id]) }}" class="btn btn-primary mb-2"><i class="mdi mdi-reply mr-1"></i>
+                    <a href="{{ Route('show',['id'=>$product->id]) }}" class="btn btn-primary mb-2"><i class="mdi mdi-reply mr-1"></i>
                         Back</a>
                 </div>
                 <div class="flex-button">
@@ -26,7 +26,7 @@
             <div class="alert alert-danger">Input is incorrect, please re-enter</div>
         @endif
         @if (!empty($product))
-            <form action="{{ Route('products.update', ['id' => $product->id]) }}" method="POST"
+            <form action="{{ Route('update', ['id' => $product->id]) }}" method="POST"
                 enctype="multipart/form-data" class="dropzone" id="updateForm" data-plugin="dropzone"
                 data-previews-container="#file-previews" data-upload-preview-template="#uploadPreviewTemplate">
                 @csrf
@@ -34,39 +34,26 @@
                     <div class="col-xl-6">
                         <div class="form-group">
                             <label for="productCode">Code</label>
-                            <input type="text" id="productCode" name="code"
-                                class="form-control @error('code') is-invalid @enderror" placeholder="Enter product name"
-                                value="{{ $product->code }}">
-                            @error('code')
+                            <input type="text" id="productCode" name="productCode"
+                                class="form-control @error('productCode') is-invalid @enderror" placeholder="Enter product name"
+                                value="{{ $product->productCode }}">
+                            @error('productCode')
                                 <span style="color: red">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label for="productName">Product Name</label>
-                            <input type="text" id="productName" name="product_name"
-                                class="form-control @error('product_name') is-invalid @enderror"
-                                placeholder="Enter product name" value="{{ $product->product_name }}">
-                            @error('product_name')
-                                <span style="color: red">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label>Categories</label>
-                            <select class="form-control select2" multiple name="category_id[]" data-toggle="select2">
-                                @foreach ($categories as $category)
-                                    <option
-                                        @foreach ($model->categories as $value)  @if ($value->id == $category->id) selected @endif @endforeach
-                                        value="{{ $category->id }}">{{ $category->name }}</option>
-                                @endforeach
-                            </select>
-                            @error('category_id')
+                            <input type="text" id="productName" name="productName"
+                                class="form-control @error('productName') is-invalid @enderror"
+                                placeholder="Enter product name" value="{{ $product->productName }}">
+                            @error('productName')
                                 <span style="color: red">{{ $message }}</span>
                             @enderror
                         </div>
 
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label>Makers</label>
-                            <select name="maker" id="" class="form-control @error('maker') is-invalid @enderror">
+                            <select name="productBrand" id="" class="form-control @error('maker') is-invalid @enderror">
                                 <option value=""></option>
                                 @foreach ($makers as $maker)
                                     <option {{ old('maker') == $maker->id ? "selected" : "" }} @if ($maker->id == $model->maker) selected @endif value="{{ $maker->id }}">{{ $maker->name }}</option>
@@ -77,14 +64,14 @@
                             @error('maker')
                                 <span style="color: red">{{ $message }}</span>
                             @enderror
-                        </div>
+                        </div> --}}
 
                         <div class="form-group">
                             <label for="price">Price</label>
-                            <input type="text" id="price" name="price"
-                                class="validate number form-control @error('price') is-invalid @enderror" placeholder="Enter product name"
-                                value="{{ $product->price }}">
-                            @error('price')
+                            <input type="text" id="price" name="productPrice"
+                                class="validate number form-control @error('productPrice') is-invalid @enderror" placeholder="Enter product name"
+                                value="{{ $product->productPrice }}">
+                            @error('productPrice')
                                 <span style="color: red">{{ $message }}</span>
                             @enderror
                         </div>
@@ -92,80 +79,34 @@
 
                         <div class="form-group">
                             <label for="quantity">Quantity</label>
-                            <input type="text" id="quantity" name="quantity"
-                                class="validate number form-control @error('quantity') is-invalid @enderror" placeholder="quantity"
-                                value="{{ $product->quantity }}">
-                            @error('price')
+                            <input type="text" id="quantity" name="productQuantity"
+                                class="validate number form-control @error('productQuantity') is-invalid @enderror" placeholder="quantity"
+                                value="{{ $product->productQuantity }}">
+                            @error('productQuantity')
                                 <span style="color: red">{{ $message }}</span>
                             @enderror
                         </div>
-
-                        <div class="row">
-                            <div class="col-md-4">
-                                <label for="length">Product length</label>
-                                <input type="text" id="length" name="length"
-                                    class="validate number form-control @error('length') is-invalid @enderror"
-                                    placeholder="product length( CM )" value="{{ $product->length }}">
-                                @error('length')
-                                    <span style="color: red">{{ $message }}</span>
-                                @enderror
-                            </div>
-
-                            <div class="col-md-4">
-                                <label for="width">Product width</label>
-                                <input type="text" id="width" name="width"
-                                    class="validate number form-control @error('width') is-invalid @enderror"
-                                    placeholder="product width( CM )" value="{{ $product->width }}">
-                                @error('width')
-                                    <span style="color: red">{{ $message }}</span>
-                                @enderror
-                            </div>
-
-                            <div class="col-md-4">
-                                <label for="width">Product height</label>
-                                <input type="text" id="height" name="height"
-                                    class=" validate number form-control @error('height') is-invalid @enderror"
-                                    placeholder="product height( CM )" value="{{ $product->height }}">
-                                @error('height')
-                                    <span style="color: red">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-
 
                     </div> <!-- end col-->
 
                     <div class="col-xl-6">
 
                         <div class="form-group">
-
-                            <div class="">
-                                <label for="color">Color</label>
-                                <input type="color" id="color" name="color"
-                                    class="col-2 form-control @error('color') is-invalid @enderror"
-                                    placeholder="product color" value="{{ $product->color }}">
-                                @error('color')
-                                    <span style="color: red">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-
-
-                        <div class="form-group">
                             <label for="description">Description</label>
-                            <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description" rows="5"
-                                placeholder="description">{{ $product->description }}</textarea>
-                            @error('description')
+                            <textarea class="form-control @error('productDetail') is-invalid @enderror" name="productDetail" id="description" rows="5"
+                                placeholder="description">{{ $product->productDetail }}</textarea>
+                            @error('productDetail')
                                 <span style="color: red">{{ $message }}</span>
                             @enderror
                         </div>
 
                         <div class="fallback">
-                            <input type="file" name="product_img" id="product_img">
+                            <label for="product_img" class="btn btn-success mb-2">Select Image</label>
+                            <input name="productImage" type="file" id="product_img" style="display: none"/>
                         </div>
 
-                        <div class="mt-4" style="text-align:center">
-                            <img src="{{ asset('images/' . $product->product_img . '') }}" alt="contact-img"
+                        <div class="mt-4">
+                            <img src="{{ asset("storage/uploads/products/$product->productImage") }}" alt="contact-img"
                                 title="contact-img" id="img-show" class="rounded mr-3" height="250" />
                         </div>
                     </div> <!-- end col-->
