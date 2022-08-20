@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductFormRequest;
+use App\Models\Brand;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
@@ -20,29 +22,29 @@ class ProductController extends Controller
 
     public function getProducts()
     {
-        return DataTables::of($this->repo->getCode())
+        return DataTables::of(Product::orderBy('productCode','desc')->get())
             ->setRowId(function ($row) {
                 return $row->id;
             })
 
             //format số lượng chữ hiển thị
-            ->editColumn('product_name', function ($row) {
-                return strlen(($row->product_name)) > 30 ? substr($row->product_name, 0, 20) . "..." : $row->product_name;
+            ->editColumn('productName', function ($row) {
+                return strlen(($row->productName)) > 30 ? substr($row->productName, 0, 20) . "..." : $row->productName;
             })
-            ->editColumn('product_img', function ($row) {
-                return "<img src=\" " . asset("images/$row->product_img") . "\"  alt=\"contact-img\" title=\"contact-img\" class=\"rounded mr-3\" height=\"48\" />";
+            ->editColumn('productImage', function ($row) {
+                return "<img src=\" " . asset("storage/uploads/products/$row->productImage") . "\"  alt=\"contact-img\" title=\"contact-img\" class=\"rounded mr-3\" height=\"48\" />";
             })
-            ->editColumn('product_name', function ($row) {
-                $link = route('products.show', ['id' => $row->id]);
-                return "<a href='$link'>$row->product_name</a>";
+            ->editColumn('productName', function ($row) {
+                $link = route('show', ['id' => $row->id]);
+                return "<a href='$link'>$row->productName</a>";
             })
-            ->editColumn('price', function ($row) {
-                return "".number_format(($row->price),2)."$";
+            ->editColumn('productPrice', function ($row) {
+                return "".number_format(($row->productPrice),2)."$";
             })
-            ->editColumn('quantity', function ($row) {
-                return number_format(($row->quantity));
+            ->editColumn('productQuantity', function ($row) {
+                return number_format(($row->productQuantity));
             })
-            ->rawColumns(['product_img','product_name','price'])
+            ->rawColumns(['productImage','productName','productPrice'])
             ->make(true);
     }
 
@@ -53,7 +55,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $makers = Brand::all();
+        return view('product.add', compact('makers'));
     }
 
     /**
@@ -64,7 +67,21 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ($request->has('productImage')) {
+            $image = $request->file('productImage')->storeAs(
+                'uploads/products',
+                uniqid() . $request->productImage->getClientOriginalName()
+            );
+            $image = str_replace('uploads/products/','',$image);
+        }else {
+            $image = null;
+        }
+
+        $params = $request->all();
+        $params['productImage'] = $image;
+        $product = new Product();
+        $create = $product->create($params);
+        return redirect()->route('product');
     }
 
     /**

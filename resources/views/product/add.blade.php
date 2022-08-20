@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-xl-12 flex-button">
                 <div>
-                    <a href="{{ Route('products.index') }}" class="btn btn-primary mb-2"><i class="mdi mdi-reply mr-1"></i>
+                    <a href="{{ Route('product') }}" class="btn btn-primary mb-2"><i class="mdi mdi-reply mr-1"></i>
                         Back</a>
                 </div>
                 <div class="flex-button">
@@ -22,7 +22,7 @@
         @if ($errors->any())
             <div class="alert alert-danger">Input is incorrect, please re-enter</div>
         @endif
-        <form action="{{ Route('products.create') }}" method="POST" enctype="multipart/form-data" class="dropzone"
+        <form action="{{ Route('create') }}" method="POST" enctype="multipart/form-data" class="dropzone"
             id="addForm" data-plugin="dropzone" data-previews-container="#file-previews"
             data-upload-preview-template="#uploadPreviewTemplate">
             @csrf
@@ -31,10 +31,10 @@
 
                     <div class="form-group">
                         <label for="productCode">Code</label>
-                        <input type="text" id="productCode" name="code"
+                        <input type="text" id="productCode" name="productCode"
                             class="validate uppercase form-control @error('code') is-invalid @enderror" placeholder="Enter product name"
-                            value="{{ old('code') }}">
-                        @error('code')
+                            value="{{ old('productCode') }}">
+                        @error('productCode')
                             <span style="color: red">{{ $message }}</span>
                         @enderror
                     </div>
@@ -43,34 +43,20 @@
 
                     <div class="form-group">
                         <label for="productName">Product Name</label>
-                        <input type="text" id="productName" name="product_name"
-                            class="form-control @error('product_name') is-invalid @enderror"
-                            placeholder="Enter product name" value="{{ old('product_name') }}">
-                        @error('product_name')
+                        <input type="text" id="productName" name="productName"
+                            class="form-control @error('productName') is-invalid @enderror"
+                            placeholder="Enter product name" value="{{ old('productName') }}">
+                        @error('productName')
                             <span style="color: red">{{ $message }}</span>
                         @enderror
                     </div>
 
                     <div class="form-group">
-                        <label>Categories</label>
-                        <select name="product_cat[]" id="" class="form-control select2"
-                            data-toggle="select2" multiple>
-                            <option value=""></option>
-                            @foreach ($categories as $cat)
-                                <option value="{{ $cat->id }}"
-                                    {{ in_array($cat->id, (array) old('product_cat')) ?? [] ? 'selected' : '' }}>
-                                    {{ $cat->name }}</option>
-                            @endforeach
-                            <option value=""></option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
                         <label>Makers</label>
-                        <select name="maker" id="" class="form-control ">
+                        <select name="productBrand" id="" class="form-control ">
                             <option value=""></option>
                             @foreach ($makers as $maker)
-                                <option {{ old('maker') == $maker->id ? "selected" : "" }} value="{{ $maker->id }}">{{ $maker->name }}</option>
+                                <option {{ old('productBrand') == $maker->id ? "selected" : "" }} value="{{ $maker->id }}">{{ $maker->name }}</option>
                             @endforeach
                             <option value=""></option>
                         </select>
@@ -78,70 +64,33 @@
 
                     <div class="form-group">
                         <label for="price">Price</label>
-                        <input  type="text" id="price" name="price" class="validate number form-control"
-                            placeholder="Enter product name" value="{{ old('price') }}">
+                        <input  type="text" id="price" name="productPrice" class="validate number form-control"
+                            placeholder="Enter product name" value="{{ old('productPrice') }}">
 
                     </div>
 
                     <div class="form-group">
                         <label for="quantity">Quantity</label>
-                        <input type="text" id="quantity" name="quantity"
+                        <input type="text" id="quantity" name="productQuantity"
                             class="validate number form-control" placeholder="quantity"
-                            value="{{ old('quantity') }}">
+                            value="{{ old('productQuantity') }}">
 
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-4">
-                            <label for="length">Product length</label>
-                            <input type="text" id="length" name="length"
-                                class="validate number form-control"
-                                placeholder="product length( CM )" value="{{ old('length') }}">
-
-                        </div>
-
-                        <div class="col-md-4">
-                            <label for="width">Product width</label>
-                            <input type="text" id="width" name="width"
-                                class="validate number form-control" placeholder="product width( CM )"
-                                value="{{ old('width') }}">
-
-                        </div>
-
-                        <div class="col-md-4">
-                            <label for="height">Product height</label>
-                            <input type="text" id="height" name="height"
-                                class="validate number form-control "
-                                placeholder="product height( CM )" value="{{ old('height') }}">
-
-                        </div>
                     </div>
 
 
                 </div> <!-- end col-->
 
                 <div class="col-xl-6">
-                    <div class="form-group">
-
-                        <div>
-                            <label for="color">Color</label>
-                            <input type="color" id="color" name="color"
-                                class="form-control col-2" placeholder="product color"
-                                value="{{ old('color') }}">
-
-                        </div>
-                    </div>
-
 
                     <div class="form-group">
                         <label for="description">Description</label>
-                        <textarea class="form-control " name="description" id="description" rows="5"
-                            placeholder="description" value="{{ old('description') }}"></textarea>
+                        <textarea class="form-control " name="productDetail" id="description" rows="5"
+                            placeholder="description" value="{{ old('productDetail') }}"></textarea>
 
                     </div>
 
                     <div class="fallback">
-                        <input name="product_img" type="file" id="product_img" multiple />
+                        <input name="productImage" type="file" id="product_img" multiple />
 
                     </div>
 

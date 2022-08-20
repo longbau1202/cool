@@ -31,7 +31,7 @@
                             <div class="card-body">
                                 <div class="row mb-2">
                                     <div class="col-sm-4">
-                                        <a href="{{Route('products.create')}}" class="btn btn-success mb-2"><i
+                                        <a href="{{Route('create')}}" class="btn btn-success mb-2"><i
                                                 class="mdi mdi-plus-circle mr-2"></i> Add Products</a>
                                     </div>
                                 </div>
@@ -106,32 +106,38 @@
             },
             columns: [
                 {
-                    data: 'product_img',
-                    name: 'product_img',
+                    data: 'productImage',
+                    name: 'productImage',
                     orderable: true,
                     searchable: true
                 },
                 {
-                    data: 'code',
-                    name: 'code',
+                    data: 'productCode',
+                    name: 'productCode',
                     orderable: true,
                     searchable: true
                 },
                 {
-                    data: 'product_name',
-                    name: 'product_name',
+                    data: 'productName',
+                    name: 'productName',
                     orderable: true,
                     searchable: true
                 },
                 {
-                    data: 'price',
-                    name: 'price',
+                    data: 'productPrice',
+                    name: 'productPrice',
                     orderable: true,
                     searchable: true
                 },
                 {
-                    data: 'quantity',
-                    name: 'quantity',
+                    data: 'productQuantity',
+                    name: 'productQuantity',
+                    orderable: true,
+                    searchable: true
+                },
+                {
+                    data: 'productBrand',
+                    name: 'productBrand',
                     orderable: true,
                     searchable: true
                 }

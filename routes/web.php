@@ -32,6 +32,16 @@ Route::group(['middleware' => 'verfiy-role'], function() {
         Route::group(['prefix' => 'product'], function(){
             Route::get('/', [ProductController::class, 'index'])->name('product');
             Route::get('/get-product', [ProductController::class, 'getProducts'])->name('getProducts');
+            
+            Route::get('/create',[ProductController::class,'create'])->name('create');
+            Route::post('/create',[ProductController::class,'store'])->name('create');
+
+            Route::get('/detail/{id}',[ProductController::class,'show'])->name('show');
+
+            Route::get('/edit/{id}',[ProductController::class,'edit'])->name('edit');
+            Route::post('/edit/{id}',[ProductController::class,'update'])->name('update');
+
+            Route::delete('/destroy/{id}',[ProductController::class,'destroy'])->name('destroy');
         });
     });
 });
