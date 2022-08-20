@@ -13,14 +13,17 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::group(['prefix' => 'admin'], function() {
-    Route::get('/', [loginController::class, 'index'])->name('admin');
+    Route::get('/', function () {
+        return view('layout.master');
+    })->name('home');
+    Route::get('/index', [loginController::class, 'index'])->name('admin');
     Route::post('/login', [loginController::class, 'login'])->name('admin.login');
     Route::get('/register-form', [loginController::class, 'register'])->name('admin.register.form');
     Route::post('/register', [loginController::class, 'store'])->name('admin.register');
     Route::get('/logout', [loginController::class, 'logout'])->name('admin.logout');
 });
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+

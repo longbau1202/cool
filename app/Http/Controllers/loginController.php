@@ -21,7 +21,7 @@ class loginController extends Controller
         {
             echo "da dang nhap";
         } else {
-            return view('login.index');
+            return view('auth.login');
         }
     }
 
