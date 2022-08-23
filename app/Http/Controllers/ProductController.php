@@ -93,7 +93,8 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::findOrFail($id);
-        return view('product.detail', compact('product'));
+        $maker = Product::with('makers')->find($id);
+        return view('product.detail', compact('product','maker'));
     }
 
     /**
@@ -104,8 +105,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
+        $makers = Brand::all();
         $product = Product::findOrFail($id);
-        return view('product.edit', compact('product'));
+        return view('product.edit', compact('product','makers'));
     }
 
     /**

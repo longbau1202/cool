@@ -56,7 +56,7 @@
                         <select name="productBrand" id="" class="form-control ">
                             <option value=""></option>
                             @foreach ($makers as $maker)
-                                <option {{ old('productBrand') == $maker->id ? "selected" : "" }} value="{{ $maker->id }}">{{ $maker->name }}</option>
+                                <option {{ old('productBrand') == $maker->id ? "selected" : "" }} value="{{ $maker->id }}">{{ $maker->makerName }}</option>
                             @endforeach
                             <option value=""></option>
                         </select>

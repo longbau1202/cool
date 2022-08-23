@@ -45,7 +45,6 @@
                                                 <th>Name</th>
                                                 <th>Price</th>
                                                 <th>Quantity</th>
-                                                <th>Brand</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -132,12 +131,6 @@
                 {
                     data: 'productQuantity',
                     name: 'productQuantity',
-                    orderable: true,
-                    searchable: true
-                },
-                {
-                    data: 'productBrand',
-                    name: 'productBrand',
                     orderable: true,
                     searchable: true
                 }

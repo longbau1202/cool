@@ -23,6 +23,6 @@ class Product extends Model
 
     public function makers()
     {
-      return $this->belongsTo(Brand::class,'brand');
+      return $this->hasOne(Brand::class,'id','productBrand');
     }
 }

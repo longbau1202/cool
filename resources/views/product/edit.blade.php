@@ -51,12 +51,12 @@
                             @enderror
                         </div>
 
-                        {{-- <div class="form-group">
+                        <div class="form-group">
                             <label>Makers</label>
                             <select name="productBrand" id="" class="form-control @error('maker') is-invalid @enderror">
                                 <option value=""></option>
                                 @foreach ($makers as $maker)
-                                    <option {{ old('maker') == $maker->id ? "selected" : "" }} @if ($maker->id == $model->maker) selected @endif value="{{ $maker->id }}">{{ $maker->name }}</option>
+                                    <option {{ old('productBrand') == $maker->id ? "selected" : "" }} @if ($maker->id == $product->productBrand) selected @endif value="{{ $maker->id }}">{{ $maker->makerName }}</option>
                                 @endforeach
                                 <option value=""></option>
                             </select>
@@ -64,7 +64,7 @@
                             @error('maker')
                                 <span style="color: red">{{ $message }}</span>
                             @enderror
-                        </div> --}}
+                        </div>
 
                         <div class="form-group">
                             <label for="price">Price</label>

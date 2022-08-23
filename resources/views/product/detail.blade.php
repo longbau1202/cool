@@ -46,10 +46,10 @@
 
                                 </div>
 
-                                {{-- <div class="form-group">
+                                <div class="form-group">
                                     <h5 class="text-success">Maker</h5>
-                                    <p class="">{{$maker->productBrand }}</p>
-                                </div> --}}
+                                    <p class="">{{$maker['makers']->makerName }}</p>
+                                </div>
 
                                 <div class="form-group">
                                     <h5 class="text-success" for="price">Price</h5>
@@ -74,6 +74,7 @@
                                 </div>
 
                                 <div class="mt-4">
+                                    <h5 class="text-success" for="image">Image</h5>
                                     <img src="{{ asset("storage/uploads/products/$product->productImage") }}" alt="contact-img"
                                         title="contact-img" id="img-show" class="rounded mr-3" height="250" />
                                 </div>

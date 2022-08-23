@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -29,10 +30,10 @@ Route::group(['middleware' => 'verfiy-role'], function() {
             return view('layout.master');
         })->name('home');
 
-        Route::group(['prefix' => 'product'], function(){
+        Route::group(['prefix' => 'product'], function() {
             Route::get('/', [ProductController::class, 'index'])->name('product');
             Route::get('/get-product', [ProductController::class, 'getProducts'])->name('getProducts');
-            
+
             Route::get('/create',[ProductController::class,'create'])->name('create');
             Route::post('/create',[ProductController::class,'store'])->name('create');
 
@@ -42,6 +43,20 @@ Route::group(['middleware' => 'verfiy-role'], function() {
             Route::post('/edit/{id}',[ProductController::class,'update'])->name('update');
 
             Route::delete('/destroy/{id}',[ProductController::class,'destroy'])->name('destroy');
+        });
+        Route::group(['prefix' => 'makers'], function() {
+            Route::get('/', [BrandController::class, 'index'])->name('maker');
+            Route::get('/get-makers', [BrandController::class, 'getMakers'])->name('getMakers');
+
+            Route::get('/create',[BrandController::class,'create'])->name('maker.create');
+            Route::post('/create',[BrandController::class,'store'])->name('maker.store');
+
+            Route::get('/detail/{id}',[BrandController::class,'show'])->name('maker.show');
+
+            Route::get('/edit/{id}',[BrandController::class,'edit'])->name('maker.edit');
+            Route::post('/edit/{id}',[BrandController::class,'update'])->name('maker.update');
+
+            Route::delete('/destroy/{id}',[BrandController::class,'destroy'])->name('maker.destroy');
         });
     });
 });
