@@ -19,43 +19,34 @@
         <div class="row">
             <div class="col-12">
                 <form style="border: 2px dashed #dee2e6; background: #fff; border-radius: 6px; cursor: pointer; min-height: 150px; padding: 20px;" id="addform" name="addform"
-                action="{{ route('maker.create') }}" method="post"
+                action="{{ route('slide.create') }}" method="post"
                     enctype="multipart/form-data">
                     @csrf
                         <div class="row">
                             <div class="col-xl-6">
                                 <div class="form-group">
-                                    <label for="makerCode"><strong>Code<span style="color: red">*</span></strong></label>
-                                    <input type="text" id="makerCode" name="makerCode"
+                                    <label for="slideTitle"><strong>Title<span style="color: red">*</span></strong></label>
+                                    <input type="text" id="slideTitle" name="slideTitle"
                                         class="form-control {{ $errors->has }}"
-                                        placeholder="Enter Code" value="{{ old('makerCode') }}">
+                                        placeholder="Enter Code" value="{{ old('slideTitle') }}">
                                 </div>
-                                @error('code')
+                                @error('slideTitle')
                                 <span style="color:red;">{{$message}}</span>
                                 @enderror
                                 <div class="form-group">
-                                    <label for="makerName"><strong>Name<span style="color: red">*</span></strong></label>
-                                    <input type="text" id="makerName" name="makerName"
-                                        class="form-control @error('name') is-invalid @enderror"
-                                        placeholder="Enter Maker name" value="{{ old('makerName') }}">
+                                    <label for="slideContent"><strong>Content<span style="color: red">*</span></strong></label>
+                                    <input type="text" id="slideContent" name="slideContent"
+                                        class="form-control @error('slideContent') is-invalid @enderror"
+                                        placeholder="Enter Maker name" value="{{ old('slideContent') }}">
                                 </div>
-                                @error('name')
-                                <span style="color:red;">{{$message}}</span>
-                                @enderror
-                                <div class="form-group">
-                                    <label for="makerCode">Country</label>
-                                    <input type="text" id="makerCode" name="makerCountry" placeholder="Country"
-                                        class="form-control @error('makerCountry') is-invalid @enderror"
-                                        value="{{ old('makerCountry') }}">
-                                </div>
-                                @error('makerCountry')
+                                @error('slideContent')
                                 <span style="color:red;">{{$message}}</span>
                                 @enderror
                             </div>
                             <div class="col-xl-6">
                                 <div class="fallback">
-                                    <label for="makerImage" class="btn btn-success mb-2">Select Image</label>
-                                    <input name="makerImage" type="file" id="makerImage" style="display: none"/>
+                                    <label for="slideImage" class="btn btn-success mb-2">Select Image</label>
+                                    <input name="slideImage" type="file" id="slideImage" style="display: none"/>
                                 </div>
 
                                 <div class="mt-4">
@@ -81,7 +72,7 @@
             FR.readAsDataURL(file)
         }
         document.addEventListener('DOMContentLoaded', () => {
-            let inputFile = document.querySelector('#makerImage')
+            let inputFile = document.querySelector('#slideImage')
             let image = document.getElementById("img-show")
             image.setAttribute('src', 'https://cdn.stocksnap.io/img-thumbs/960w/nature-path_4LVC9Y8JMW.jpg');
             inputFile.addEventListener('change', (e) => {

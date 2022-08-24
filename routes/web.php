@@ -3,6 +3,7 @@
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SlideController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -57,6 +58,20 @@ Route::group(['middleware' => 'verfiy-role'], function() {
             Route::post('/edit/{id}',[BrandController::class,'update'])->name('maker.update');
 
             Route::delete('/destroy/{id}',[BrandController::class,'destroy'])->name('maker.destroy');
+        });
+        Route::group(['prefix' => 'slides'], function() {
+            Route::get('/', [SlideController::class, 'index'])->name('slide');
+            Route::get('/get-slides', [SlideController::class, 'getSlides'])->name('getSlides');
+
+            Route::get('/create',[SlideController::class,'create'])->name('slide.create');
+            Route::post('/create',[SlideController::class,'store'])->name('slide.store');
+
+            Route::get('/detail/{id}',[SlideController::class,'show'])->name('slide.show');
+
+            Route::get('/edit/{id}',[SlideController::class,'edit'])->name('slide.edit');
+            Route::post('/edit/{id}',[SlideController::class,'update'])->name('slide.update');
+
+            Route::delete('/destroy/{id}',[SlideController::class,'destroy'])->name('slide.destroy');
         });
     });
 });
