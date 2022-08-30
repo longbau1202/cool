@@ -19,7 +19,7 @@ class SlideController extends Controller
         return view('slideshow.index');
     }
 
-    public function getMakers()
+    public function getSlides()
     {
         return DataTables::of(Slide::orderBy('slideTitle','desc')->get())
             ->setRowId(function ($row) {

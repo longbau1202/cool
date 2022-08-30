@@ -6,7 +6,7 @@
 <div class="card-body">
     <div class="d-flex mb-2 justify-content-between">
         <div>
-            <a href="{{ route('maker') }}" class="btn btn-primary"><i class="mdi mdi-reply mr-1"></i>Back</a>
+            <a href="{{ route('slide') }}" class="btn btn-primary"><i class="mdi mdi-reply mr-1"></i>Back</a>
         </div>
         <div class="d-flex justify-content-end">
             <button type="reset" form="addform" class="btn btn-secondary ml-2  mr-2"><i class="uil-refresh mr-1"></i>Clear

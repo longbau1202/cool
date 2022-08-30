@@ -24,7 +24,13 @@ class SlideFormRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'slideImage' => [
+                'image',
+                'mimes:jpeg,png,jpg,gif,svg'
+            ],
+            'slideTitle' => [
+                'required',
+            ]
         ];
     }
 }

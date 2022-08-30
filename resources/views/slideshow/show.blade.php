@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-xl-12" style="display: flex; justify-content: space-between;">
             <div class="col-sm-4">
-                <a href="{{ Route('maker') }}" class="btn btn-primary mb-2"><i
+                <a href="{{ Route('slide') }}" class="btn btn-primary mb-2"><i
                         class="mdi mdi-reply mr-1"></i> Back</a>
             </div>
             <div style="display: flex; justify-content: space-between;">
