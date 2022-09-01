@@ -20,21 +20,27 @@
                 </a>
             </li>
             <li class="side-nav-item">
-                <a href="#" class="side-nav-link">
+                <a href="{{ route('product') }}" class="side-nav-link">
                     <i class="uil-box"></i>
                     <span> Products </span>
                 </a>
             </li>
             <li class="side-nav-item">
-                <a href="#" class="side-nav-link">
-                    <i class="dripicons-list"></i>
-                    <span> Categories </span>
+                <a href="{{ route('maker') }}" class="side-nav-link">
+                    <i class="dripicons-user-id"></i>
+                    <span> Makers </span>
                 </a>
             </li>
             <li class="side-nav-item">
-                <a href="#" class="side-nav-link">
+                <a href="{{ route('slide') }}" class="side-nav-link">
                     <i class="dripicons-user-id"></i>
-                    <span> Makers </span>
+                    <span> Slides </span>
+                </a>
+            </li>
+            <li class="side-nav-item">
+                <a href="{{ route('profile') }}" class="side-nav-link">
+                    <i class="mdi mdi-account-circle mr-1"></i>
+                    <span> profile </span>
                 </a>
             </li>
         </ul>

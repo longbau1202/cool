@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SlideFormRequest;
 use App\Models\Slide;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\DataTables;
 
 class SlideController extends Controller
@@ -16,7 +17,8 @@ class SlideController extends Controller
      */
     public function index()
     {
-        return view('slideshow.index');
+        $profile = Auth::user();
+        return view('slideshow.index',compact('profile'));
     }
 
     public function getSlides()
@@ -71,34 +73,34 @@ class SlideController extends Controller
 
     public function show($id)
     {
-        $maker = Slide::findOrFail($id);
-        return view('makers.show', compact('maker'));
+        $slide = Slide::findOrFail($id);
+        return view('slideshow.show', compact('slide'));
     }
 
     public function edit($id)
     {
-        $maker = Slide::findOrFail($id);
-        return view('makers.edit', compact('maker'));
+        $slide = Slide::findOrFail($id);
+        return view('slideshow.edit', compact('slide'));
     }
 
     public function update(SlideFormRequest $request, $id)
     {
-        $maker = Slide::findOrFail($id);
+        $slide = Slide::findOrFail($id);
 
-        if ($request->has('makerImage')) {
-            $image = $request->file('makerImage')->storeAs(
-                'uploads/makers',
-                uniqid() . $request->makerImage->getClientOriginalName()
+        if ($request->has('slideImage')) {
+            $image = $request->file('slideImage')->storeAs(
+                'uploads/slides',
+                uniqid() . $request->slideImage->getClientOriginalName()
             );
-            $image = str_replace('uploads/makers/','',$image);
+            $image = str_replace('uploads/slides/','',$image);
         }else {
-            $image = $maker->makerImage;
+            $image = $slide->slideImage;
         }
 
         $params = $request->all();
-        $params['makerImage'] = $image;
-        $update = $maker->fill($params)->save();
-        return redirect()->route('maker.show',['id' => $id]);
+        $params['slideImage'] = $image;
+        $update = $slide->fill($params)->save();
+        return redirect()->route('slide.show',['id' => $id]);
     }
 
     /**

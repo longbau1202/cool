@@ -7,13 +7,13 @@
         </li>
         <li class="dropdown notification-list">
             <a class="nav-link dropdown-toggle nav-user arrow-none mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                @if(!empty($auth))
+                @if(!empty($profile))
                 <span class="account-user-avatar">
-                    <img src="{{ asset('assets/images/users/dong.jpg') }}" alt="user-image" class="rounded-circle">
+                    <img src="{{ asset("storage/uploads/profiles/$profile->avatar") }}" alt="user-image" class="rounded-circle">
                 </span>
                 <span>
-                    <span class="account-user-name">{{$auth->name}}</span>
-                    @if($auth->role == 1)
+                    <span class="account-user-name">{{$profile->fullName}}</span>
+                    @if($profile->role == 1)
                     <span class="account-position">Admin</span>
                     @endif
                 </span>
@@ -23,21 +23,14 @@
                 <div class=" dropdown-header noti-title">
                     <h6 class="text-overflow m-0">Welcome !</h6>
                 </div>
-                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                <a href="{{ route('profile') }}" class="dropdown-item notify-item">
                     <i class="mdi mdi-account-circle mr-1"></i>
                     <span>My Account</span>
                 </a>
-                @if(!empty($auth))
-                <a href="{{ route('') }}" class="dropdown-item notify-item">
-                    <i class="mdi mdi-logout mr-1"></i>
-                    <span>Logout</span>
-                </a>
-                @else
                 <a href="{{ route('logout') }}" class="dropdown-item notify-item">
                     <i class="mdi mdi-logout mr-1"></i>
                     <span>Logout</span>
                 </a>
-                @endif
             </div>
         </li>
     </ul>

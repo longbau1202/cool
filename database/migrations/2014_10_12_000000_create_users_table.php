@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('gender')->nullable();
             $table->string('role')->nullable();
             $table->string('phoneNumber')->nullable();
+            $table->string('avatar')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

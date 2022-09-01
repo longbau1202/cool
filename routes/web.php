@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SlideController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,9 +29,7 @@ Route::group(['prefix' => 'login'], function(){
 
 Route::group(['middleware' => 'verfiy-role'], function() {
     Route::group(['prefix' => 'admin'], function() {
-        Route::get('/', function () {
-            return view('layout.master');
-        })->name('home');
+        Route::get('/', [Controller::class, 'index'])->name('home');
 
         Route::group(['prefix' => 'product'], function() {
             Route::get('/', [ProductController::class, 'index'])->name('product');
@@ -72,6 +72,15 @@ Route::group(['middleware' => 'verfiy-role'], function() {
             Route::post('/edit/{id}',[SlideController::class,'update'])->name('slide.update');
 
             Route::delete('/destroy/{id}',[SlideController::class,'destroy'])->name('slide.destroy');
+        });
+
+        Route::group(['prefix' => 'myprofile'], function() {
+            Route::get('/', [ProfileController::class, 'index'])->name('profile');
+
+            Route::get('/edit',[ProfileController::class,'edit'])->name('profile.edit');
+            Route::post('/edit',[ProfileController::class,'update'])->name('profile.update');
+
+            Route::delete('/destroy/{id}',[ProfileController::class,'destroy'])->name('slide.destroy');
         });
     });
 });

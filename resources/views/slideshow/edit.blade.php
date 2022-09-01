@@ -12,7 +12,7 @@
     </div>
     <div class="d-flex mb-2 justify-content-between">
         <div>
-            <a href="{{ route('maker') }}" class="btn btn-primary"><i class="mdi mdi-reply mr-1"></i>Back</a>
+            <a href="{{ route('slide') }}" class="btn btn-primary"><i class="mdi mdi-reply mr-1"></i>Back</a>
         </div>
         <div class="d-flex justify-content-end">
             <button type="reset" form="editform" class="btn btn-secondary mr-2"><i class="uil-refresh mr-1"></i>Clear
@@ -23,7 +23,7 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <form id="editform" name="editform" action="{{ route('maker.update', ['id' => $maker->id]) }}" method="post"
+            <form id="editform" name="editform" action="{{ route('slide.update', ['id' => $slide->id]) }}" method="post"
                   enctype="multipart/form-data">
                 @csrf
                 <div class="card">
@@ -31,38 +31,32 @@
                         <div class="row">
                             <div class="col-xl-6">
                                 <div class="form-group">
-                                    <label for="makerCode"><strong>Code<span style="color: red">*</span></strong></label>
-                                    <input type="text" id="makerCode" name="makerCode"
-                                           class="form-control @error('makerCode') is-invalid @enderror"
-                                           placeholder="Enter Code" value="{{ old('makerCode', $maker->makerCode) }}">
+                                    <label for="slideTitle"><strong>Title<span style="color: red">*</span></strong></label>
+                                    <input type="text" id="slideTitle" name="slideTitle"
+                                           class="form-control @error('slideTitle') is-invalid @enderror"
+                                           placeholder="Enter Title" value="{{ old('slideTitle', $slide->slideTitle) }}">
                                 </div>
-                                @error('makerCode')
+                                @error('slideTitle')
                                 <span style="color:red;">{{$message}}</span>
                                 @enderror
                                 <div class="form-group">
-                                    <label for="makerName"><strong>Name<span style="color: red">*</span></strong></label>
-                                    <input type="text" id="makerName" name="makerName"
-                                           class="form-control @error('makerName') is-invalid @enderror"
-                                           placeholder="Enter Maker name" value="{{ old('makerName', $maker->makerName) }}">
+                                    <label for="slideContent"><strong>Content<span style="color: red">*</span></strong></label>
+                                    <input type="text" id="slideContent" name="slideContent"
+                                           class="form-control @error('slideContent') is-invalid @enderror"
+                                           placeholder="Enter slide content" value="{{ old('slideContent', $slide->slideContent) }}">
                                 </div>
-                                @error('makerName')
+                                @error('slideContent')
                                 <span style="color:red;">{{$message}}</span>
                                 @enderror
-                                <div class="form-group">
-                                    <label for="makerCountry"><strong>Country</strong></label>
-                                    <input type="text" id="makerCountry" name="makerCountry"
-                                           class="form-control @error('makerCountry') is-invalid @enderror"
-                                           placeholder="Enter Maker name" value="{{ old('makerCountry', $maker->makerCountry) }}">
-                                </div>
                             </div>
                             <div class="col-xl-6">
                                 <div class="fallback">
-                                    <label for="makerImage" class="btn btn-success mb-2">Select Image</label>
-                                    <input name="makerImage" type="file" id="makerImage" style="display: none"/>
+                                    <label for="slideImage" class="btn btn-success mb-2">Select Image</label>
+                                    <input name="slideImage" type="file" id="slideImage" style="display: none"/>
                                 </div>
 
                                 <div class="mt-4">
-                                    <img src="{{ asset("storage/uploads/makers/$maker->makerImage") }}" alt="contact-img"
+                                    <img src="{{ asset("storage/uploads/slides/$slide->slideImage") }}" alt="contact-img"
                                         title="contact-img" id="img-show" class="rounded mr-3" height="250" />
                                 </div>
                             </div>
