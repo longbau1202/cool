@@ -45,7 +45,7 @@
                                 </div>
                                 <div class="form-group">
                                     <h5 class="text-success">Gender</h5>
-                                    <input disabled class="input-css" value="{{ $profile->gender }}">
+                                    <input disabled class="input-css" value="{{ $profile->gender == 1 ? 'Male' : 'Female' }}">
 
                                 </div>
 

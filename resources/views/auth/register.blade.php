@@ -30,6 +30,24 @@
                     <span class="text-danger">{{$message}}</span>
                     @enderror
                 </div>
+                <div class="form-group pb-3">
+                    <input type="text" placeholder="Fullname" name="fullName" class="form-control">
+                    @error('fullName')
+                    <span class="text-danger">{{$message}}</span>
+                    @enderror
+                </div>
+                <div class="form-group pb-3">
+                    <input type="text" placeholder="Phone number" name="phoneNumber" class="form-control">
+                    @error('phoneNumber')
+                    <span class="text-danger">{{$message}}</span>
+                    @enderror
+                </div>
+                <div class="form-group pb-3">
+                    <input type="text" placeholder="Address" name="address" class="form-control">
+                    @error('address')
+                    <span class="text-danger">{{$message}}</span>
+                    @enderror
+                </div>
                 <div class="pb-2">
                     <button type="submit" class="btn btn-dark w-100 font-weight-bold mt-2">Submit</button>
                 </div>

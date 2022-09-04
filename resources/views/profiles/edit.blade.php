@@ -79,9 +79,10 @@
                                 @enderror
                                 <div class="form-group">
                                     <label for="gender"><strong>Gender</strong></label>
-                                    <input type="text" id="gender" name="gender"
-                                           class="form-control @error('gender') is-invalid @enderror"
-                                           placeholder="Enter Gender" value="{{ old('gender', $profile->gender) }}">
+                                    <select   class="form-control" name="gender" id="gender">
+                                        <option value="1" {{ $profile->gender == 1 ? "selected" : "" }}>Male</option>
+                                        <option value="2" {{ $profile->gender == 2 ? "selected" : "" }}>Female</option>
+                                    </select>
                                 </div>
                                 @error('gender')
                                 <span style="color:red;">{{$message}}</span>

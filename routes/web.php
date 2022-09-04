@@ -3,6 +3,8 @@
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\loginController;
+use App\Http\Controllers\MemberController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SlideController;
@@ -86,7 +88,18 @@ Route::group(['middleware' => 'verfiy-role'], function() {
 });
 
 Route::group(['prefix' => 'member'], function() {
-    Route::get('/', function () {
-        return view('member.layout.master');
-    })->name('member.home');
+    Route::get('/', [MemberController::class, 'index'])->name('member.home');
+    Route::get('/product', [MemberController::class, 'product'])->name('member.product');
+    Route::get('/product/{id}', [MemberController::class, 'detail'])->name('member.detail');
+
+    Route::post('/save-cart/{id}', [OrderController::class, 'save'])->name('member.cart');
+    Route::post('/saveCheckout', [OrderController::class, 'saveCheckout'])->name('member.cart.saveCheckout');
+    Route::get('/update-qty/{id}', [OrderController::class, 'update'])->name('member.cart.update');
+    Route::get('/delete-cart/{id}', [OrderController::class, 'delete'])->name('member.cart.delete');
+    Route::get('/show-cart', [OrderController::class, 'show'])->name('member.cart.show');
+    Route::get('/pay', [OrderController::class, 'pay'])->name('member.cart.pay');
+
+    Route::post('/find', [MemberController::class, 'find'])->name('member.find');
+    Route::get('/search', [MemberController::class, 'search'])->name('member.search');
+
 });

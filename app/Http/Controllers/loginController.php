@@ -19,7 +19,7 @@ class loginController extends Controller
     {
         if (Auth::check())
         {
-            return redirect()->route('home');
+            return redirect()->route('member.home');
         } else {
             return view('auth.formlogin');
         }
@@ -43,7 +43,7 @@ class loginController extends Controller
         ];
         if (Auth::attempt($login))
         {
-            return redirect()->route('home');
+            return redirect()->route('member.home');
         } else
         {
             return view('auth.formlogin');
