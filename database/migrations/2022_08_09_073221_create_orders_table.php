@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('shipping_address');// dia chi giao hang
             $table->string('grand_total');//tong don gia
             $table->string('code');//ma giao hang
-            $table->string('delivery_status');//trang thai giao hang
+            $table->string('delivery_status')->nullable();//trang thai giao hang
             $table->timestamps();
         });
     }

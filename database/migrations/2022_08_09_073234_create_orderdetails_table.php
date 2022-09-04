@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('productId');
             $table->string('priceTotal');
             $table->string('quantity');
+            $table->string('note')->nullable();
             $table->timestamps();
         });
     }
