@@ -13,10 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('brands', function (Blueprint $table) {
+        Schema::create('makers', function (Blueprint $table) {
             $table->id();
-            $table->string('brandCode')->uniqid();
-            $table->string('brandName')->nullable();
+            $table->string('makerCode')->uniqid();
+            $table->string('makerImage')->nullable();
+            $table->string('makerName')->nullable();
+            $table->string('makerCountry')->nullable();
             $table->timestamps();
         });
     }

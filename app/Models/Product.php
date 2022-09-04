@@ -8,4 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
+
+    protected $table = 'products';
+
+    protected $fillable = [
+        'productName',
+        'productPrice',
+        'productQuantity',
+        'productCode',
+        'productDetail',
+        'productBrand',
+        'productImage'
+    ];
+
+    public function makers()
+    {
+      return $this->hasOne(Brand::class,'id','productBrand');
+    }
 }

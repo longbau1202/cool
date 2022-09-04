@@ -1,0 +1,199 @@
+* {
+    font-family: 'Poppins', sans-serif;
+    font-size: medium;
+    color: rgba(54, 51, 51, 0.877);
+}
+.logo {
+    width: 100px; height: 100px;
+    margin-top: 0%;
+}
+.img-product {
+    width: 60%;
+    align-items: center;
+    height: 160px;
+    transition: transform .2s;
+    /* width: 200px; */
+    height: 200px;
+    margin: 0 auto;
+
+}
+.img-product:hover{
+    transform: scale(1.5);
+
+}
+
+ul {
+    list-style-type: none;
+  }
+.container {
+  width: 100%;
+}
+.table {
+    width: 100%;
+}
+.filter h3 {
+    text-align: center;
+    font-size: 30px;
+}
+.filter{
+    margin-left: 5%;
+    background-color: rgba(233, 219, 201, 0.733);
+}
+.filter li {
+    margin-left: 5px;
+}
+.filter a:link {
+    text-decoration: none;
+    font-size: 24px;
+}
+.filter a:hover {
+    color: red;
+}
+.filter input[type=checkbox] {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+}
+.filter input[type=search] {
+    width: 80%;
+    height: 25px;
+    margin: auto;
+}
+.filter label {
+    font-size: 19px;
+    margin-left: 5px;
+}
+.filter button {
+    margin:  auto;
+    max-width: 50%;
+}
+.filter h3 {
+    border-bottom: 1px solid #ccc;
+    margin-top: 5%;
+    margin-bottom: 10%;
+}
+.nav-item {
+    margin-left: 15px;
+}
+.nav-item a {
+    font-size: 24px;
+}
+.navbar {
+    height: 130px;
+    background-color: rgba(233, 219, 201, 0.733);
+}
+
+.info h1,h2,h3,h4,h5,h6 {
+    margin-bottom: 13px;
+}
+input {
+    margin: 0;
+}
+.bottom-text h4 {
+    text-align: center;
+}
+a{
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: none;
+    font-weight: 700;
+}
+.container{
+    max-width: 100%;
+}
+.backgroud{
+    background-image: url(../doan3/picture/cool-background.png);
+    background-size: cover;
+
+}
+.img-fluid{
+    max-height: 100%;
+}
+.align-items-center{
+    margin-top: 20%;
+}
+.item{
+   width: auto;
+    overflow: hidden;
+}
+.map-container{
+    overflow:hidden;
+    padding-bottom:20%;
+    position:relative;
+    height:0;
+ }
+ .map-container iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+    }
+    .navbar-brand {
+        height: auto;
+    }
+.parameter td{
+    width: 50%;
+}
+.parameter th{
+    width: 50%;
+    background-color: beige;
+}
+.parameter h3{
+font-weight: bolder;
+}
+.parameter li{
+    margin: auto;
+
+}
+.image {
+    width: 100%;
+}
+.image img{
+    width: 100%;
+    object-fit: contain;
+    border-radius: 5px;
+}
+.text {
+    text-align: center;
+}
+.m1 div:not(:first-child) {
+    margin-top: 5px;
+}
+.search {
+    width: 20%;
+    padding: 20px;
+}
+.flex-box {
+    display: flex;
+    justify-content: space-between;
+}
+.menu {
+    width: 80%;
+}
+.logo {
+    width: 15%;
+}
+.logo img {
+    width: 100%;
+    object-fit: contain;
+}
+.maker {
+    background-color: rgb(255, 255, 255);
+    color: black;
+    font-weight: 700;
+    border: 1px hidden;
+    border-radius: 5px;
+}
+.maker:hover{
+    background-color: rgb(10, 230, 10);
+    color: white;
+}
+.paginate {
+    height: 29px;
+}
+.style-paginate {
+    width: 20%;
+    margin-left: auto;
+}
