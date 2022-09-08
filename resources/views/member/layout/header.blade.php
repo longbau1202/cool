@@ -7,7 +7,12 @@
             <div class="collapse navbar-collapse flex-box" id="navbarSupportedContent">
                 <ul class="navbar-nav mb-lg-0 m-0 menu">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ route('loginform') }}">Đăng Nhập</a>
+                        @if (isset($auth))
+                            <a class="nav-link active" aria-current="page" href="{{ route('logout') }}">Đăng xuất</a>
+                        @else
+                            <a class="nav-link active" aria-current="page" href="{{ route('loginform') }}">Đăng Nhập</a>
+                        @endif
+
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="{{ route('member.cart.show') }}">Giỏ Hàng</a>
