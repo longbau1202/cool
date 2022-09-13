@@ -16,27 +16,12 @@
                         <p>Trạng thái: {{$products->productQuantity > 0 ? 'Còn hàng' : 'Hết hàng'}}</p>
                         <p>Chọn số lượng: <input type="number" name="qty" value="1"> </p>
                         <div class="datmua">
-                            <button type="submit"
-                                style="width: 100%;margin:auto;margin-bottom: 13px; background-color: red">
+                            <button type="submit" class="add-cart">
                                 <h2>Đặt mua</h2>
                                 <p>Giao hàng tận nơi trên toàn quốc</p>
                             </button>
                         </div>
-                        <button type="button" style="width: 48%;margin:auto; background-color: green">
-                            <h2>Tư vấn</h2>
-                            <p>Rheem Cooling sẽ gọi lại bạn.</p>
-                        </button>
-                        <button type="button" style="width: 48%; margin:auto; background-color: yellow">
-                            <h2>Mua trả góp</h2>
-                            <p>Qua thẻ Visa, Master card, FE </p>
-                        </button>
-
                     </form>
-                    <div>
-                        <p style="margin-top:15px ;">Mua sản phẩm này bạn sẽ được giao hàng miễn phí trong nội thành Hà Nội
-                            và TP.Hồ Chí Minh</p>
-
-                    </div>
                 </div>
                 <div class="infogood col-sm-0 col-md-3 col-lg-3 ml-3 mt-5">
                     <a href="#">

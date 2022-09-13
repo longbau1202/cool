@@ -20,21 +20,24 @@ class MemberController extends Controller
 
     public function product() {
         $makers = Brand::get();
+        $auth = Auth::user();
         $products = Product::orderBy('updated_at', 'desc')->simplePaginate(12);
-        return view('member.product.product', compact('products','makers'));
+        return view('member.product.product', compact('products', 'makers', 'auth'));
     }
 
     public function detail($id) {
         $products = Product::findOrFail($id);
         $maker = Product::with('makers')->find($id);
         $makers = Brand::get();
-        return view('member.product.detail', compact('products', 'makers', 'maker'));
+        $auth = Auth::user();
+        return view('member.product.detail', compact('products', 'makers', 'maker', 'auth'));
     }
 
     public function find(Request $request) {
         $products = Product::where('productBrand', $request->find)->simplePaginate(12);
         $makers = Brand::get();
-        return view('member.product.product', compact('products', 'makers'));
+        $auth = Auth::user();
+        return view('member.product.product', compact('products', 'makers', 'auth'));
     }
 
     public function search(Request $request) {
@@ -51,6 +54,7 @@ class MemberController extends Controller
                 ->simplePaginate(12);
         }
         $makers = Brand::get();
-        return view('member.product.product', compact('products', 'makers'));
+        $auth = Auth::user();
+        return view('member.product.product', compact('products', 'makers', 'auth'));
     }
 }

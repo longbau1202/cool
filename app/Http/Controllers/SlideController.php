@@ -109,8 +109,10 @@ class SlideController extends Controller
      * @param  \App\Models\Slide  $slide
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Slide $slide)
+    public function destroy($id)
     {
-        //
+        $item = Slide::findOrFail($id);
+        $item->delete();
+        return redirect()->route('slide');
     }
 }

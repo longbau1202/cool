@@ -26,6 +26,12 @@
                 </a>
             </li>
             <li class="side-nav-item">
+                <a href="{{ route('order') }}" class="side-nav-link">
+                    <i class="uil-box"></i>
+                    <span> Orders </span>
+                </a>
+            </li>
+            <li class="side-nav-item">
                 <a href="{{ route('maker') }}" class="side-nav-link">
                     <i class="dripicons-user-id"></i>
                     <span> Makers </span>
@@ -40,7 +46,13 @@
             <li class="side-nav-item">
                 <a href="{{ route('profile') }}" class="side-nav-link">
                     <i class="mdi mdi-account-circle mr-1"></i>
-                    <span> profile </span>
+                    <span> Profile </span>
+                </a>
+            </li>
+            <li class="side-nav-item">
+                <a href="{{ route('member.home') }}" class="side-nav-link">
+                    <i class="mdi mdi-account-circle mr-1"></i>
+                    <span> My website </span>
                 </a>
             </li>
         </ul>

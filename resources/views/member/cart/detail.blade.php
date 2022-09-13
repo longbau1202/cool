@@ -30,11 +30,11 @@
                                         <div class="form-group">
                                             <label for="">Số điện thoại <span class="text-red">*</span></label>
                                             @if($auth)
-                                            <input type="text" name="phoneNumber" placeholder="Số điện thoại" value="{{$auth->phoneNumber}}">
+                                            <input type="text" name="phone_number" placeholder="Số điện thoại" value="{{$auth->phoneNumber}}">
                                             @else
-                                            <input type="text" name="phoneNumber" placeholder="Số điện thoại" value="{{old('phoneNumber')}}">
+                                            <input type="text" name="phone_number" placeholder="Số điện thoại" value="{{old('phone_number')}}">
                                             @endif
-                                            @error('phoneNumber')
+                                            @error('phone_number')
                                             <span class="text-danger">{{$message}}</span>
                                             @enderror
                                         </div>
@@ -55,12 +55,12 @@
                                         <div class="form-group">
                                             <label for="">Họ tên <span class="text-red">*</span></label>
                                             @if($auth)
-                                            <input type="text" placeholder="Họ & Tên" name="fullName" value="{{$auth->fullName}}">
+                                            <input type="text" placeholder="Họ & Tên" name="order_name" value="{{$auth->fullName}}">
                                             @else
-                                            <input type="text" placeholder="Họ & Tên" name="fullName" value="{{old('fullName')}}">
+                                            <input type="text" placeholder="Họ & Tên" name="order_name" value="{{old('order_name')}}">
                                             @endif
                                         </div>
-                                        @error('fullName')
+                                        @error('order_name')
                                         <span class="text-danger">{{$message}}</span>
                                         @enderror
                                         <div class="form-group">

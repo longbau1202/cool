@@ -39,7 +39,8 @@ class OrderController extends Controller
     public function show()
     {
         $makers = Brand::get();
-        return view('member.cart.index', compact('makers'));
+        $auth = Auth::user();
+        return view('member.cart.index', compact('makers', 'auth'));
     }
     public function delete($id)
     {
@@ -73,6 +74,9 @@ class OrderController extends Controller
             $model->user_id = Auth::user()->id;
         }
         $model->shipping_address = $request->address;
+        $model->phone_number = $request->phone_number;
+        $model->email = $request->email;
+        $model->order_name = $request->order_name;
         $model->grand_total = $request->grand_total;
         $model->code = date('dmY-His');
         $model->save();

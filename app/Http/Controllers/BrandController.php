@@ -134,8 +134,10 @@ class BrandController extends Controller
      * @param  \App\Models\Brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Brand $brand)
+    public function destroy($id)
     {
-        //
+        $item = Brand::findOrFail($id);
+        $item->delete();
+        return redirect()->route('maker');
     }
 }

@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrderdetailController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SlideController;
@@ -47,6 +48,13 @@ Route::group(['middleware' => 'verfiy-role'], function() {
 
             Route::delete('/destroy/{id}',[ProductController::class,'destroy'])->name('destroy');
         });
+        Route::group(['prefix' => 'order'], function() {
+            Route::get('/', [OrderdetailController::class, 'index'])->name('order');
+            Route::get('/get-order', [OrderdetailController::class, 'getOrders'])->name('getOrders');
+
+            Route::get('/detail/{id}',[OrderdetailController::class,'show'])->name('order.show');
+            Route::delete('/destroy/{id}',[OrderdetailController::class,'destroy'])->name('order.destroy');
+        });
         Route::group(['prefix' => 'makers'], function() {
             Route::get('/', [BrandController::class, 'index'])->name('maker');
             Route::get('/get-makers', [BrandController::class, 'getMakers'])->name('getMakers');
@@ -82,7 +90,7 @@ Route::group(['middleware' => 'verfiy-role'], function() {
             Route::get('/edit',[ProfileController::class,'edit'])->name('profile.edit');
             Route::post('/edit',[ProfileController::class,'update'])->name('profile.update');
 
-            Route::delete('/destroy/{id}',[ProfileController::class,'destroy'])->name('slide.destroy');
+            Route::delete('/destroy/{id}',[ProfileController::class,'destroy'])->name('profile.destroy');
         });
     });
 });
