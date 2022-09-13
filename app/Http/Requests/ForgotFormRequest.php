@@ -3,18 +3,15 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class SlideFormRequest extends FormRequest
+class ForgotFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
-    public function authorize()
-    {
-        return true;
-    }
 
     /**
      * Get the validation rules that apply to the request.
@@ -24,11 +21,8 @@ class SlideFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'slideImage' => [
-                'required',
-                'image',
-                'mimes:jpeg,png,jpg'
-            ],
+            'password' => ['required'],
+            'confirm_password' => ['same:password'],
         ];
     }
 }

@@ -33,7 +33,6 @@ class OrderController extends Controller
         Cart::add($data);
 
         return redirect()->route('member.cart.show');
-
     }
 
     public function show()
@@ -44,17 +43,18 @@ class OrderController extends Controller
     }
     public function delete($id)
     {
-        Cart::update($id,0);
+        Cart::update($id, 0);
         return redirect()->route('member.cart.show');
     }
     public function update(Request $request, $id)
     {
         $qty = $request->quantity;
-        Cart::update($id,$qty);
+        Cart::update($id, $qty);
         return redirect()->route('member.cart.show');
     }
 
-    public function pay() {
+    public function pay()
+    {
         $makers = Brand::get();
         $auth = Auth::user();
         $content = Cart::content()->count();
@@ -74,9 +74,9 @@ class OrderController extends Controller
             $model->user_id = Auth::user()->id;
         }
         $model->shipping_address = $request->address;
-        $model->phone_number = $request->phone_number;
+        $model->phone_number = $request->phoneNumber;
         $model->email = $request->email;
-        $model->order_name = $request->order_name;
+        $model->order_name = $request->fullName;
         $model->grand_total = $request->grand_total;
         $model->code = date('dmY-His');
         $model->save();
@@ -102,5 +102,4 @@ class OrderController extends Controller
         }
         return redirect()->route('member.cart.show')->with('success', "Đặt hàng thành công!");
     }
-
 }

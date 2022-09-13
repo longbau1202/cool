@@ -18,6 +18,9 @@
     <div class="card">
         <div class="row">
             <div class="col-12">
+                @if ($errors->any())
+            <div class="alert alert-danger">Input is incorrect, please re-enter</div>
+        @endif
                 <form style="border: 2px dashed #dee2e6; background: #fff; border-radius: 6px; cursor: pointer; min-height: 150px; padding: 20px;" id="addform" name="addform"
                 action="{{ route('slide.create') }}" method="post"
                     enctype="multipart/form-data">
@@ -25,23 +28,17 @@
                         <div class="row">
                             <div class="col-xl-6">
                                 <div class="form-group">
-                                    <label for="slideTitle"><strong>Title<span style="color: red">*</span></strong></label>
+                                    <label for="slideTitle"><strong>Title</strong></label>
                                     <input type="text" id="slideTitle" name="slideTitle"
-                                        class="form-control {{ $errors->has }}"
+                                        class="form-control"
                                         placeholder="Enter Code" value="{{ old('slideTitle') }}">
                                 </div>
-                                @error('slideTitle')
-                                <span style="color:red;">{{$message}}</span>
-                                @enderror
                                 <div class="form-group">
-                                    <label for="slideContent"><strong>Content<span style="color: red">*</span></strong></label>
+                                    <label for="slideContent"><strong>Content</strong></label>
                                     <input type="text" id="slideContent" name="slideContent"
-                                        class="form-control @error('slideContent') is-invalid @enderror"
+                                        class="form-control"
                                         placeholder="Enter Maker name" value="{{ old('slideContent') }}">
                                 </div>
-                                @error('slideContent')
-                                <span style="color:red;">{{$message}}</span>
-                                @enderror
                             </div>
                             <div class="col-xl-6">
                                 <div class="fallback">
@@ -53,6 +50,9 @@
                                     <img src="" alt="contact-img" title="contact-img" id="img-show" class="rounded mr-3"
                                         height="250" />
                                 </div>
+                                @error('slideImage')
+                                    <span style="color:red;">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                 </form>

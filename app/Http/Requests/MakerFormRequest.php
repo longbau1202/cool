@@ -27,11 +27,10 @@ class MakerFormRequest extends FormRequest
         return [
             'makerImage' => [
                 'image',
-                'mimes:jpeg,png,jpg,gif,svg'
+                'mimes:jpeg,png,jpg'
             ],
             'makerName' => [
                 'required',
-                'min:6',
                 'max:50',
             ],
             'makerCode'  => [

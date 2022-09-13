@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', [MemberController::class, 'index'])->name('member.home');
 
 Route::group(['prefix' => 'login'], function(){
     Route::get('/', [loginController::class, 'index'])->name('loginform');
@@ -28,6 +29,8 @@ Route::group(['prefix' => 'login'], function(){
     Route::get('/register-form', [loginController::class, 'register'])->name('register.form');
     Route::post('/register', [loginController::class, 'store'])->name('register');
     Route::get('/logout', [loginController::class, 'logout'])->name('logout');
+    Route::post('/forget', [loginController::class, 'forgetpass'])->name('forget');
+    Route::get('/forget-form', [loginController::class, 'forget'])->name('forget.form');
 });
 
 Route::group(['middleware' => 'verfiy-role'], function() {

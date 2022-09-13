@@ -27,7 +27,7 @@
                 <div class="d-flex align-items-center justify-content-between">
                     <div class="d-flex align-items-center">
                     </div>
-                    <div><a href="#">Forget Password?</a></div>
+                    <div><a href="{{route('forget.form')}}">Forget Password</a></div>
                 </div>
                 <div class="d-flex align-items-center justify-content-between">
                     <div class="d-flex align-items-center">

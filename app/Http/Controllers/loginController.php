@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ForgotFormRequest;
 use App\Http\Requests\LoginFormRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -17,8 +18,7 @@ class loginController extends Controller
      */
     public function index()
     {
-        if (Auth::check())
-        {
+        if (Auth::check()) {
             return redirect()->route('member.home');
         } else {
             return view('auth.formlogin');
@@ -28,6 +28,27 @@ class loginController extends Controller
     public function register()
     {
         return view('auth.register');
+    }
+
+    public function forget()
+    {
+        return view('auth.forget');
+    }
+    public function forgetpass(ForgotFormRequest $request)
+    {
+        $user = User::where('email', '=', $request->email)->first();
+        if ($user != null && $user->role != 1) {
+
+            $params = $request->all();
+            $params['password'] = Hash::make($request->password);
+
+            $user->update($params);
+
+            return view('auth.formlogin');
+        }
+
+        return view('auth.formlogin');
+
     }
 
     /**
@@ -41,11 +62,9 @@ class loginController extends Controller
             'email' => $request->email,
             'password' => $request->password,
         ];
-        if (Auth::attempt($login))
-        {
+        if (Auth::attempt($login)) {
             return redirect()->route('member.home');
-        } else
-        {
+        } else {
             return view('auth.formlogin');
         }
     }
@@ -56,12 +75,6 @@ class loginController extends Controller
         return redirect()->route('loginform');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(LoginFormRequest $request)
     {
         $params = $request->all();
@@ -72,57 +85,10 @@ class loginController extends Controller
             'email' => $request->email,
             'password' => $request->password,
         ];
-        if (Auth::attempt($login))
-        {
+        if (Auth::attempt($login)) {
             return redirect()->route('home');
-        } else
-        {
+        } else {
             return redirect()->route('register.form');
         }
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

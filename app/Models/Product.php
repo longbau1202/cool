@@ -18,7 +18,8 @@ class Product extends Model
         'productCode',
         'productDetail',
         'productBrand',
-        'productImage'
+        'productImage',
+        'specifications'
     ];
 
     public function makers()

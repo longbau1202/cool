@@ -72,6 +72,11 @@
                                     <div class="">{!! nl2br(e($product->productDetail)) !!}</div>
 
                                 </div>
+                                <div class="form-group">
+                                    <h5 class="text-success" for="specifications">Specifications</h5>
+                                    <div class="">{!! nl2br(e($product->specifications)) !!}</div>
+
+                                </div>
 
                                 <div class="mt-4">
                                     <h5 class="text-success" for="image">Image</h5>

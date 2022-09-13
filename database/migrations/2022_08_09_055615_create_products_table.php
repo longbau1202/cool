@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('productBrand')->nullable();
             $table->string('productImage')->nullable();
             $table->string('productDetail')->nullable();
+            $table->string('specifications')->nullable();
             $table->timestamps();
         });
     }

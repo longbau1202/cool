@@ -21,7 +21,7 @@ class MemberController extends Controller
     public function product() {
         $makers = Brand::get();
         $auth = Auth::user();
-        $products = Product::orderBy('updated_at', 'desc')->simplePaginate(12);
+        $products = Product::orderBy('updated_at', 'desc')->simplePaginate(8);
         return view('member.product.product', compact('products', 'makers', 'auth'));
     }
 
