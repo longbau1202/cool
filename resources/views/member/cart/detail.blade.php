@@ -91,8 +91,10 @@
                                                 <div class="item">
                                                     <span class="both1">Sản phẩm</span>
                                                     <span> : </span>
+                                                    <br>
                                                     <!-- (S) vòng lặp sp -->
                                                 @foreach($contents as $value)
+                                                    <img src="{{ asset("storage/uploads/products/".$value->options->image) }}" alt="image" width='100px'>
 
                                                     <span>{{$value->name}}</span>
 

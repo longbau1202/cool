@@ -38,15 +38,6 @@
                     <button type="submit" class="btn btn-dark w-100 font-weight-bold mt-2">Submit</button>
                 </div>
             </form>
-            {{-- <div class="sideline">OR</div>
-            <div>
-                <a href="{{route('auth.google')}}" class="btn btn-primary w-100 font-weight-bold mt-2">
-                    <i class="fa-brands fa-google" aria-hidden="true"></i> Login With Google
-                </a>
-            </div> --}}
-            <div class="pt-4 text-center">
-                Get Members Benefit. <a href="#">Sign Up</a>
-            </div>
         </div>
 
     </div>

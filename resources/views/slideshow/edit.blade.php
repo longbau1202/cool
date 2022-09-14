@@ -83,7 +83,7 @@
             FR.readAsDataURL(file)
         }
         document.addEventListener('DOMContentLoaded', () => {
-            let inputFile = document.querySelector('#makerImage')
+            let inputFile = document.querySelector('#slideImage')
             let image = document.getElementById("img-show")
 
             inputFile.addEventListener('change', (e) => {

@@ -264,3 +264,6 @@ a:hover {
     background-color: rgb(10, 151, 29);
     border-radius: 10px;
 }
+li {
+   list-style-type: none !important;
+}

@@ -21,7 +21,7 @@
                         <a href="{{ route('member.product') }}" class="nav-link  active">Sản phẩm</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Hỗ Trợ</a>
+                        <a class="nav-link active" href="#support">Hỗ Trợ</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active"

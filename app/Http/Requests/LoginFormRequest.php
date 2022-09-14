@@ -22,8 +22,8 @@ class LoginFormRequest extends FormRequest
     {
         return [
             'email' => ['required', 'email', Rule::unique('users', 'email')],
-            'password' => ['required'],
-            'confirm_password' => ['same:password'],
+            'password' => 'required|confirmed|min:8',
+            'password_confirmation' => 'min:8',
             'fullName' => 'nullable',
         ];
     }

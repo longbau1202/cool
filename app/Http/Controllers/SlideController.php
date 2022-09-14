@@ -83,7 +83,7 @@ class SlideController extends Controller
         return view('slideshow.edit', compact('slide'));
     }
 
-    public function update(SlideFormRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $slide = Slide::findOrFail($id);
 

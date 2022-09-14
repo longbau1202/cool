@@ -25,8 +25,8 @@
                     @enderror
                 </div>
                 <div class="form-group pb-3">
-                    <input type="password" placeholder="Password confirm" name="comfirm_password" class="form-control">
-                    @error('password')
+                    <input type="password" placeholder="Password confirm" name="password_confirmation" class="form-control">
+                    @error('password_confirmation')
                     <span class="text-danger">{{$message}}</span>
                     @enderror
                 </div>

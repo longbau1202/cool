@@ -39,9 +39,11 @@
                         @foreach ($products as $product)
                             <div class="col-3">
                                 <div class="image">
-                                    <img class="rounded img-product img-fluid "
-                                        src="{{ asset("storage/uploads/products/$product->productImage") }}"
-                                        alt="Samsung Inverter">
+                                    <a href="{{ route('member.detail', ['id' => $product->id]) }}">
+                                        <img class="rounded img-product img-fluid "
+                                            src="{{ asset("storage/uploads/products/$product->productImage") }}"
+                                            alt="Samsung Inverter">
+                                    </a>
                                 </div>
                                 <div class="text">
                                     <a href="{{ route('member.detail', ['id' => $product->id]) }}">

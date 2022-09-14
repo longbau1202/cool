@@ -89,7 +89,7 @@
                         <div class="form-group">
                             <label for="description">Description</label>
                             <textarea
-                                class="form-control @error('productDetail') is-invalid"
+                                class="form-control @error('productDetail') is-invalid  @enderror"
                                 rows="5" placeholder="description">{{ $product->productDetail }}</textarea>
                         </div>
                         <div class="form-group">
@@ -115,12 +115,6 @@
             </form>
 @endif
         <!-- end row -->
-        <div class="
-                                dropzone-previews mt-3" id="file-previews"></div>
-
-
-
-        </div> <!-- end card-body -->
 @endsection
 @section('js')
     <script>

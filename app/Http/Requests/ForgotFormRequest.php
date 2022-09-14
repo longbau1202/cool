@@ -22,7 +22,7 @@ class ForgotFormRequest extends FormRequest
     {
         return [
             'password' => ['required'],
-            'confirm_password' => ['same:password'],
+            'confirm_password' => 'required|same:password',
         ];
     }
 }

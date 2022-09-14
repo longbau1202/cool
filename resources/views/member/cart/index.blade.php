@@ -9,9 +9,8 @@
                     </div>
                     <div class="content">
                         <div class="row">
-                            <div class="col-lg-1">
+                            <div class="col-lg-1" style="width:100%; text-align: center;">
                                 <h2>Shopping Cart</h2>
-                                <p>text</p>
                             </div>
 
                                 <?php
@@ -80,7 +79,7 @@
                                     <div><label for="">Tổng: {{ Cart::total() }} VND</label></div>
                                 </div>
                                 <div class="items">
-                                    <a href="{{ Route('member.cart.pay') }}">Thanh Toán</a>
+                                    <a style="padding: 5px; back" href="{{ Route('member.cart.pay') }}">Thanh Toán</a>
                                 </div>
                         </div>
                     </div>
